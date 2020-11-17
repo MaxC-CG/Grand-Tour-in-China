@@ -182,6 +182,7 @@ class simple_city:
 
 
 # -------------渲染网页------------- #
+# ***城市呈现页面*** #
 @app.route('/city.<CityName>')
 def City(CityName):
     print("__________________________\n")
@@ -190,8 +191,17 @@ def City(CityName):
 
     return render_template('City.html', City=MyCity)
 
+# ***提交页面-新建城市*** #
+@app.route('/addCity')
+def addCity():
+    return render_template('addCIty.html')
 
-#--------------用户交互搜索界面--------------#
+# ***提交页面-添加资源*** #
+@app.route('/addAsset')
+def addAsset():
+    return render_template('addAsset.html')
+
+# ***用户交互搜索界面*** #
 @app.route('/search',methods=['POST', 'GET'])
 def search():
     if request.method=='POST':
@@ -275,7 +285,7 @@ def find_the_city(describe,scenery,food,activity,season):
     city_chosen.append(MyCity4)
     return city_chosen
 
-
+# ***主页*** #
 @app.route('/')
 def index():
     return render_template('main.html')
