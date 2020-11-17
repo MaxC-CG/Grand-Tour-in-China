@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>impress.js</title>
+    <link href="static/css/impress-demo.css" rel="stylesheet"/>
+    <link href="static/css/city.css"  rel="stylesheet" type="text/css" />
+</head>
+
+<body style="background:rgb(10,10,10);color:rgb(240,240,240);font-family:Roboto,Arial,sans-serif" >
+<!--幻灯片-->
+<div id="impress" class="impress-not-supported">
+
+<!--概述-->
+    <div class = "step" style="width:1280px" data-x="0" data-y="0">
+        <div class="general">
+            <img class="generalImg" style="width:100%; height:100%;" src="{{City.GetImgPath()}}">
+        </div>
+        <aside class="photo-box-aside aside-describe" style="font-size:22px">
+            <span style="font-size:30px">{{City.GetName()}}</span>
+            <br/>
+            <span>{{City.GetDescribe()}}</span>
+        </aside>
+    </div>
+
+<!--图片-->
+    {%for i in range(0,(City.Imgs)|length)%}
+    <div class="step" data-x={{(i)*1200+2000}} data-y="0" data-z="-100" data-rotate-x="380" data-rotate-z="{{(i)*45}}">
+        <div class="img_box">
+            <div><img class="image" src="{{City.Imgs[i].getImgPath()}}">
+            <aside class="photo-box-aside" style="font-size:14px;opacity: 0.6;">
+                <span>{{City.Imgs[i].getLocation() or ''}} {{City.Imgs[i].getYear() or ''}} {{City.Imgs[i].getMonth() or ''}}</span>
+            </aside>
+
+            </div>
+        </div>
+        <div class = "label">
+            <p class="title">{{(City.Imgs)[i].getTitle()}}</p>
+            <p class = "describe fade-out">{{City.Imgs[i].getDescribe() or ''}}</p>
+<!--            <HR align=center width=300 color=#987cb9 SIZE=1>-->
+        </div>
+    </div>
+    {%endfor%}
+
+<!--视频-->
+    {%for i in range(0,City.Videos|length)%}
+    <div class="step" data-x={{1200*((City.Imgs)|length)+2000+i*1000}} data-y=0 data-rotate="90">
+        <div class="video_box">
+            <video class="video" src="{{City.Videos[i].getVedioPath()}}" controls="controls" width="720" height="405"></video>
+        </div>
+        <div class = "label">
+            <p class="title">{{City.Videos[i].getTitle()}}</p>
+            <p class = "describe">{{City.Videos[i].getDescribe() or ''}}</p>
+        </div>
+    </div>
+    {%endfor%}
+
+<!-- 预览-->
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+    </div>
+</div>
+<script src="static/JS/impress.js"></script>
+<script>impress().init();</script>
+
+
+</body>
+</html>

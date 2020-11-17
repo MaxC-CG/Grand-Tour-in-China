@@ -1,0 +1,165 @@
+/*------------------------------------------------------------------
+	[Loader]
+	* Site Loader	
+------------------------------------------------------------------*/
+
+/* * Site Loader */
+.loader{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	margin: 0 auto;
+}
+.ball-triangle-path > div {
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	border: 1px solid #f3a316;	
+}
+.ball-triangle-path > div:nth-of-type(1) {
+	top: 50px;
+}
+.ball-triangle-path > div:nth-of-type(2) {
+	left: 25px;
+}
+.ball-triangle-path > div:nth-of-type(3) {
+	top: 50px;
+	left: 50px; 
+}
+.load-complete {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1031;
+}
+.load-complete .logo {
+	color: #4C4C4C;
+	text-align: center;
+	display: block;
+	margin-bottom: 20px;
+	font-size: 50px;
+}
+
+.load-complete .load-position h6 {
+    text-align: center;
+    color: #000;
+    font-size: 12px;
+	font-weight: 400;
+	font-style: italic;
+}
+.load-complete .load-position {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 999;
+    right: 0;
+    margin-top: -100px;
+}
+.load-complete .loading {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    margin: 20px auto;
+    left: 0;
+    right: 0;
+}
+.load-complete .loading-line {
+    position: absolute;
+    background: #eee;
+    width: 100%;
+    height: 2px;
+}
+.load-complete .loading-break {
+    position: absolute;
+    background: #059664;
+    width: 15px;
+    height: 2px;
+}
+.ball-triangle-path > div:nth-child(1) {
+	-webkit-animation-name: ball-triangle-path-1;
+	animation-name: ball-triangle-path-1;
+	-webkit-animation-delay: 0;
+	animation-delay: 0;
+	-webkit-animation-duration: 2s;
+	animation-duration: 2s;
+	-webkit-animation-timing-function: ease-in-out;
+	animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+}
+.ball-triangle-path > div:nth-child(2) {
+	-webkit-animation-name: ball-triangle-path-2;
+	animation-name: ball-triangle-path-2;
+	-webkit-animation-delay: 0;
+	animation-delay: 0;
+	-webkit-animation-duration: 2s;
+	animation-duration: 2s;
+	-webkit-animation-timing-function: ease-in-out;
+	animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite; 
+}
+.ball-triangle-path > div:nth-child(3) {
+	-webkit-animation-name: ball-triangle-path-3;
+	animation-name: ball-triangle-path-3;
+	-webkit-animation-delay: 0;
+	animation-delay: 0;
+	-webkit-animation-duration: 2s;
+	animation-duration: 2s;
+	-webkit-animation-timing-function: ease-in-out;
+	animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+}
+
+@keyframes "loading" {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}
+@-moz-keyframes loading {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}
+@-webkit-keyframes "loading" {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}
+@-ms-keyframes "loading" {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}
+@-o-keyframes "loading" {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}

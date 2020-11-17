@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/styles-merged.css">
+    <link rel="stylesheet" href="./static/css/style.min.css">
+    <link rel="stylesheet" href="./static/css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="./static/js/vendor/html5shiv.min.js"></script>
+      <script src="./static/js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- START: header -->
+
+
+  <!-- END: header -->
+  <div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >网站建设</a></div>
+  <div class="probootstrap-section">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 mb40">
+          <h2>Searching Result</h2>
+          <p>According to your demmand, we now recommand cities below</p>
+        </div>
+      </div>
+<!-- this is the introduction -->
+      <div class="row probootstrap-gutter16">
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeIn">
+          <a href="/city.{{city[0].CityName}}" class="img-bg" style="background-image: url({{city[0].GetImgPath()}});">
+            <div class="probootstrap-photo-details">
+              <h2>{{city[0].CityName}}</h2>
+              <p>{{city[0].Info['title']}}</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-8 probootstrap-animate" data-animate-effect="fadeIn">
+          <a href="/city.{{city[1].CityName}}" class="img-bg" style="background-image: url({{city[1].GetImgPath()}});">
+            <div class="probootstrap-photo-details">
+              <h2>{{city[1].CityName}}</h2>
+              <p>{{city[1].Info['title']}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!--<div class="row probootstrap-gutter16">
+        <div class="col-md-5 probootstrap-animate" data-animate-effect="fadeIn">
+          <a href="/city.{{city[2].CityName}}" class="img-bg" style="background-image: url({{city[2].GetImgPath()}});">
+            <div class="probootstrap-photo-details">
+              <h2>{{city[2].CityName}}</h2>
+              <p>{{city[2].Info['title']}}</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 probootstrap-animate" data-animate-effect="fadeIn">
+          <a href="/city.{{city[3].CityName}}" class="img-bg" style="background-image: url({{city[3].GetImgPath()}});">
+            <div class="probootstrap-photo-details">
+              <h2>{{city[3].CityName}}</h2>
+              <p>{{city[3].Info['title']}}</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeIn">
+          <a href="/city.{{city[4].CityName}}" class="img-bg" style="background-image: url({{city[4].GetImgPath()}});">
+            <div class="probootstrap-photo-details">
+              <h2>{{city[4].CityName}}</h2>
+              <p>{{city[4].Info['title']}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+       <div class="row probootstrap-gutter16">
+        <div class="col-md-8 probootstrap-animate" data-animate-effect="fadeIn">
+          <a href="/city.{{city[5].CityName}}" class="img-bg" style="background-image: url({{city[5].GetImgPath()}});">
+            <div class="probootstrap-photo-details">
+              <h2>{{city[5].CityName}}</h2>
+              <p>{{city[5].Info['title']}}</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 probootstrap-animate" data-animate-effect="fadeIn">
+          <a href="/City.{{city[6].CityName}}" class="img-bg" style="background-image: url({{city[6].GetImgPath()}});">
+            <div class="probootstrap-photo-details">
+              <h2>{{city[6].CityName}}</h2>
+              <p>{{city[6].Info['title']}}</p>
+            </div>
+          </a>
+        </div>
+      </div>-->
+
+    </div>
+  </div>
+
+
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+
+  <script src="./static/js/scripts.min.js"></script>
+  <script src="./static/js/main.min.js"></script>
+  <script src="./static/js/custom.js"></script>
+
+  </body>
+</html>
