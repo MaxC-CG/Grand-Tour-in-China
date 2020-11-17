@@ -11,6 +11,11 @@
 
 # ---------外部依赖--------- #
 from flask import Flask,render_template,send_file,redirect,url_for,request
+# ***表单*** #
+from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileRequired, FileAllowed, DataRequired
+from wtforms import StringField, SubmitField, FloatField
+
 import os
 import json
 from gevent import pywsgi
@@ -178,6 +183,39 @@ class simple_city:
     # 经度
     def GetLongitude(self):
         return self.Info["longitude"]
+
+# ***表单类*** #
+# 新建城市
+class addCityForm(FlaskForm):
+    name = StringField('CiryName', validators=[DataRequired()])
+    img = FileField('Upload Image', validators=[FileRequired(), FileAllowed(['png', 'jpg'])])
+    tags = StringField('Tags')
+    title = StringField('Title')
+    describe = StringField('Describe')
+    source = StringField('ImgSource')
+
+    # 经纬
+    latitude = FloatField('Latitude',validators=[DataRequired()])
+    longitude = FloatField('Longitude',validators=[DataRequired()])
+
+    submit = SubmitField("Submit")
+
+
+# 添加资源
+class addAssetForm(FlaskForm):
+    name = StringField('CiryName', validators=[DataRequired()])
+    asset = FileField('Upload Asset', validators=[FileRequired(), FileAllowed(['png', 'jpg','mp4'])])
+    theme = StringField('Theme')
+    title = StringField('Title')
+    describe = StringField('Describe')
+    source = StringField('ImgSource')
+
+    location = StringField('Location')
+    year = StringField('Year')
+    month = StringField('Month')
+
+    submit = SubmitField("Submit")
+
 # -------------类------------- #
 
 
@@ -194,12 +232,18 @@ def City(CityName):
 # ***提交页面-新建城市*** #
 @app.route('/addCity')
 def addCity():
-    return render_template('addCIty.html')
+    form = addCityForm()
+    if form.validate_on_submit():
+        return '<h1>Thank you :)</h1>'
+    return render_template('addCIty.html', form)
 
 # ***提交页面-添加资源*** #
 @app.route('/addAsset')
 def addAsset():
-    return render_template('addAsset.html')
+    form = addAssetForm()
+    if form.validate_on_submit():
+        return '<h1>Thank you :)</h1>'
+    return render_template('addAsset.html', form)
 
 # ***用户交互搜索界面*** #
 @app.route('/search',methods=['POST', 'GET'])
