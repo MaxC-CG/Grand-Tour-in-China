@@ -108,8 +108,8 @@
 							<ul class="nav navbar-nav">
 								<li><a href="index.html">Home</a></li>
 								<li><a href="/search">Search</a></li>
-								<li><a href="destination-details.html">Destination Detail</a></li>
-								<li><a href="aboutus.html">About Us</a></li>
+								<li><a href="/addCity">Add City</a></li>
+								<li><a href="/addAsset">Upload Asset</a></li>
 								<li><a href="contactus.html">Contact us</a></li>
 							</ul>
 						</div>
@@ -276,18 +276,24 @@
 				<div class="chinese-map">
 					<div class="map" align="center">
 						<img src="./static/image/map.png" alt="map" width="1920" height="1080">
-						<div style="font-size: 15px;position: absolute;z-index: 2;left: 50%;top: 69%">
-							<a href="/city.Luzhou" title="Luzhou"><img src="./static/image/label.png"></a>
+
+						{%for city in cityList%}
+						<div style="font-size: 15px;position: absolute;z-index: 2;left: {{city.getCSSLeft()}}%;top: {{city.getCSSTop()}}%">
+							<a href={{city.getURL()}} title={{city.getName()}}><img src="./static/image/label.png"></a>
 						</div>
-						<div style="font-size: 15px;position: absolute;z-index: 2;left: 70%;top: 61%">
-							<a href="/city.Deqing" title="Deqing"><img src="./static/image/label.png"></a>
-						</div>
-						<div style="font-size: 15px;position: absolute;z-index: 2;left: 69.5%;top: 66%">
-							<a href="/city.Lishui" title="Lishui"><img src="./static/image/label.png"></a>
-						</div>
-						<div style="font-size: 15px;position: absolute;z-index: 2;left: 72%;top: 64%">
-							<a href="/city.Xiangshan" title="Xiangshan"><img src="./static/image/label.png"></a>
-						</div>
+						{%endfor%}
+<!--						<div style="font-size: 15px;position: absolute;z-index: 2;left: 50%;top: 69%">-->
+<!--							<a href="/city.Luzhou" title="Luzhou"><img src="./static/image/label.png"></a>-->
+<!--						</div>-->
+<!--						<div style="font-size: 15px;position: absolute;z-index: 2;left: 70%;top: 61%">-->
+<!--							<a href="/city.Deqing" title="Deqing"><img src="./static/image/label.png"></a>-->
+<!--						</div>-->
+<!--						<div style="font-size: 15px;position: absolute;z-index: 2;left: 69.5%;top: 66%">-->
+<!--							<a href="/city.Lishui" title="Lishui"><img src="./static/image/label.png"></a>-->
+<!--						</div>-->
+<!--						<div style="font-size: 15px;position: absolute;z-index: 2;left: 72%;top: 64%">-->
+<!--							<a href="/city.Xiangshan" title="Xiangshan"><img src="./static/image/label.png"></a>-->
+<!--						</div>-->
 					</div>
 				</div>
 			</div>

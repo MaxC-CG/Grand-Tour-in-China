@@ -46,6 +46,17 @@ def getRoute(No, Belong, MyCityName):
     return Root + '/' + MyCityName + '/' + Belo[Belong] + '/' + No
 
 
+# 返回包含所有城市名的list
+def getCityList():
+    list = []
+    for dir in os.listdir(Root):
+        if not os.path.isfile(Root + '/' + dir):
+            if os.path.exists(Root + '/' + dir + '/' + 'describe.json'):
+                list.append(dir)
+
+    return list
+
+
 # -------------全局函数------------- #
 
 # -------------类------------- #
@@ -202,6 +213,44 @@ class simple_city:
         return self.Info["longitude"]
 
 
+class city_position:
+    name = ''
+    latitude = None
+    longitude = None
+    cssTop = None
+    cssLeft = None
+
+    def __init__(self, cityName):
+        self.name = cityName
+        jroute = Root + '/' + cityName + '/' + 'describe.json'
+        f = open(jroute, encoding='utf-8')
+        cityInfo = json.load(f)
+        self.latitude = cityInfo["latitude"]
+        self.longitude = cityInfo["longitude"]
+        self.calculatePosition()
+
+    def calculatePosition(self):
+        a = 1.1325
+        b = -62.6024
+        c = -2.8505
+        d = 147.271
+        ImgWidth = 6
+        self.cssLeft = a * self.longitude + b -ImgWidth/2
+        self.cssTop = c * self.latitude + d
+
+    def getCSSLeft(self):
+        return self.cssLeft
+
+    def getCSSTop(self):
+        return self.cssTop
+
+    def getName(self):
+        return self.name
+
+    def getURL(self):
+        return '/city.'+ self.name
+
+
 # ***表单类*** #
 # 新建城市
 class addCityForm(FlaskForm):
@@ -272,7 +321,7 @@ class addCityForm(FlaskForm):
 # 添加资源
 class addAssetForm(FlaskForm):
     name = StringField('CiryName', validators=[DataRequired()])
-    asset = FileField('Upload Asset', validators=[FileRequired(), FileAllowed(['png','jpg', 'mp4'])])
+    asset = FileField('Upload Asset', validators=[FileRequired(), FileAllowed(['png', 'jpg', 'mp4'])])
     theme = StringField('Theme')
     title = StringField('Title')
     describe = StringField('Describe')
@@ -489,7 +538,12 @@ def find_the_city(describe, scenery, food, activity, season):
 # ***主页*** #
 @app.route('/')
 def index():
-    return render_template('main.html')
+    cityList = getCityList()
+    positionList = []
+    for city in cityList:
+        positionList.append(city_position(city))
+
+    return render_template('main.html', cityList=positionList)
 
 
 # -------------渲染网页------------- #
