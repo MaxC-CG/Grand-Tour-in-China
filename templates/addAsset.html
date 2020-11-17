@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Asset</title>
+</head>
+<body>
+{%import "bootstrap/wtf.html" as wtf%}
+
+<!--<form method="post">-->
+<!--&lt;!&ndash;  表单防护机制  &ndash;&gt;-->
+<!--    {{form.hidden_tag()}}-->
+<!--    {{form.name.label}}{{form.name()}}-->
+<!--    {{form.submit()}}-->
+<!--</form>-->
+{{wtf.quick_form(form)}}
+</body>
+</html>
