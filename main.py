@@ -9,19 +9,17 @@
 # ---------目录结构--------- #
 
 
+# ---------外部依赖--------- #
 from flask import Flask,render_template,send_file,redirect,url_for,request
-import sys
-import mutagen
 import os
-from mutagen.mp3 import MP3
 import json
 from gevent import pywsgi
+# ---------外部依赖--------- #
 
-# ------------测试-整合时去掉------------ #
+
+# ------------flask初始化------------ #
 app=Flask(__name__)
-
-# ------------测试-整合时去掉------------ #
-
+# ------------flask初始化------------ #
 
 
 # ------------具名常量------------ #
@@ -30,19 +28,14 @@ Belo = ['Img','Video']
 # ------------具名常量------------ #
 
 
-from datetime import timedelta
-# app.config['SEND_FILE_MAX_AGE_DEFAULT']=timedelta(seconds=1)  无缓存
-
-
-# -------------函数------------- #
-
+# -------------全局函数------------- #
 # 返回不含后缀的文件路径
 def getRoute(No, Belong,MyCityName):
     return Root +'/' + MyCityName + '/' + Belo[Belong] + '/' + No
+# -------------全局函数------------- #
 
-
-
-# -------------资产管理类------------- #
+# -------------类------------- #
+# ***资产管理类*** #
 # 一个City包含一个asset，专门管理图像和视频
 class asset:
     Info = None
@@ -50,9 +43,9 @@ class asset:
     No = -1
     city_name=''
     def __init__(self,belong,no,city_name):
-        print("%%%%%%%%%%%%%%%%%%%%%%\n")
-        print(city_name)
-        print("%%%%%%%%%%%%%%%%%%%%%%\n")
+        # print("%%%%%%%%%%%%%%%%%%%%%%\n")
+        # print(city_name)
+        # print("%%%%%%%%%%%%%%%%%%%%%%\n")
         jroute=getRoute(no,belong,city_name)+'.json'
         f = open(jroute, encoding='utf-8')
 
@@ -103,7 +96,7 @@ class asset:
         return self.Info['source']
 
 
-# -------------城市类------------- #
+# ***城市类*** #
 # 一个网页只创建一个实例，提供访问各种信息的接口
 class city:
     CityName=None
@@ -142,9 +135,16 @@ class city:
     def GetTitle(self):
         return self.Info["title"]
 
+    # 纬度
+    def GetLatitude(self):
+        return self.Info["latitude"]
 
-# -------------城市类------------- #
-# 一个网页只创建一个实例，提供访问各种信息的接口
+    # 经度
+    def GetLongitude(self):
+        return self.Info["longitude"]
+
+# ***简单城市类*** #
+# 为检索提供信息
 class simple_city:
     CityName=None
     Info = None
@@ -171,9 +171,17 @@ class simple_city:
     def GetTitle(self):
         return self.Info["title"]
 
+    # 纬度
+    def GetLatitude(self):
+        return self.Info["latitude"]
+
+    # 经度
+    def GetLongitude(self):
+        return self.Info["longitude"]
+# -------------类------------- #
+
 
 # -------------渲染网页------------- #
-
 @app.route('/city.<CityName>')
 def City(CityName):
     print("__________________________\n")
@@ -181,7 +189,6 @@ def City(CityName):
     print(CityName)
 
     return render_template('City.html', City=MyCity)
-
 
 
 #--------------用户交互搜索界面--------------#
@@ -211,7 +218,6 @@ def search():
         return render_template('choice.html',city=city_chosen)#渲染网页（展示搜索结果）
     else:
         return render_template('index.html')
-
 
 
 def find_the_city(describe,scenery,food,activity,season):
@@ -269,10 +275,11 @@ def find_the_city(describe,scenery,food,activity,season):
     city_chosen.append(MyCity4)
     return city_chosen
 
+
 @app.route('/')
 def index():
     return render_template('main.html')
-
+# -------------渲染网页------------- #
 if __name__ == '__main__':
     server = pywsgi.WSGIServer(('127.0.0.1', 5000), app)
     server.serve_forever()
