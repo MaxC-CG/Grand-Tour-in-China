@@ -255,11 +255,12 @@ class city_position:
 # 新建城市
 class addCityForm(FlaskForm):
     name = StringField('CityName', validators=[DataRequired()])
-    img = FileField('Upload Image', validators=[FileRequired(), FileAllowed(['jpg'])])
-    tags = StringField('Tags')
+    img = FileField('Upload Image', validators=[FileRequired(), FileAllowed(['png','jpg'])])
+    source = StringField('ImgSource')
+    tags = StringField('Tags ( split by [,] )')
     title = StringField('Title')
     describe = StringField('Describe')
-    source = StringField('ImgSource')
+
 
     # 经纬
     latitude = FloatField('Latitude', validators=[DataRequired()])
@@ -303,7 +304,8 @@ class addCityForm(FlaskForm):
             ret = False
 
         os.makedirs(route)
-
+        os.makedirs(route+"/img")
+        os.makedirs(route+"/video")
         imgFile = self.getImg()
         imgFile.save(route + '/000.jpg')
 
