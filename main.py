@@ -56,6 +56,9 @@ def getCityList():
 
     return list
 
+def renderInform(string):
+
+    return render_template("inform_base.html",inform=string)
 
 # -------------全局函数------------- #
 
@@ -322,7 +325,7 @@ class addCityForm(FlaskForm):
 
 # 添加资源
 class addAssetForm(FlaskForm):
-    name = StringField('CiryName', validators=[DataRequired()])
+    name = StringField('CityName', validators=[DataRequired()])
     asset = FileField('Upload Asset', validators=[FileRequired(), FileAllowed(['png', 'jpg', 'mp4'])])
     theme = StringField('Theme')
     title = StringField('Title')
@@ -431,10 +434,9 @@ def addCity():
     if form.validate_on_submit():
         ret = form.outPutToDisk()
         if ret:
-            return '<h1>Thank you :)</h1>'
+            return renderInform('Thank you :)')
         else:
-            return '<h1>Thank you :)</h1>' \
-                   'The city you added already exists, we will consider updating the content'
+            return renderInform('Thank you :)  The city you added already exists, we will consider updating the content')
     return render_template('addCIty.html', form=form)
 
 
@@ -445,10 +447,9 @@ def addAsset():
     if form.validate_on_submit():
         ret = form.outPutToDisk()
         if ret:
-            return '<h1>Thank you :)</h1>'
+            return renderInform('Thank you :)')
         else:
-            return '<h1>Sorry, The City Not Exists Yet</h1>' \
-                   'Please Add City First'
+            return renderInform('Sorry, The City Not Exists Yet. Please Add City First')
     return render_template('addAsset.html', form=form)
 
 
