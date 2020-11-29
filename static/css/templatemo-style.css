@@ -43,11 +43,11 @@ p:last-child { margin-bottom: 0; }
     font-weight: 600;
 }
 
-.tm-bg-primary { background: #69c6ba; }
-.tm-bg-highlight { background: #c66995; }
+.tm-bg-primary { background-color: rgba(243, 163, 22, 0.9); }
+.tm-bg-highlight { background: rgba(243, 163, 22, 0.9); }
 
 .btn-primary {
-    background: #69c6ba;
+    background-color: rgba(243, 163, 22, 0.9);
     border: none;
     border-radius: 0;
     outline: none;
@@ -86,8 +86,8 @@ p:last-child { margin-bottom: 0; }
 .tm-top-bar a { color: black; }
 
 .navbar-brand {
-	font-size: 2.2rem;    
-    text-transform: uppercase;    
+	font-size: 2.2rem;
+    text-transform: uppercase;
 }
 
 .navbar {
@@ -103,7 +103,7 @@ p:last-child { margin-bottom: 0; }
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(104, 199, 187)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.navbar-toggler { 
+.navbar-toggler {
     border-color: rgb(104, 199, 187);
     border-radius: 0;
     cursor: pointer;
@@ -131,20 +131,20 @@ p:last-child { margin-bottom: 0; }
     background: rgba(0, 0, 0, 0.7);
 }
 .tm-banner-bg {
-    background: url(../img/banner.jpg) center top no-repeat;    
+    background: url(../img/banner.jpg) center top no-repeat;
     min-height: 720px;
     position: relative;
 }
-.tm-banner-row { 
+.tm-banner-row {
     position: relative;
     z-index: 100;
     justify-content: center;
     padding-top: 100px;
 }
 .tm-banner-row-header { text-align: center; }
-.tm-down-arrow-link { 
+.tm-down-arrow-link {
     color: white;
-    background-color: #69c6ba;
+    background-color: rgba(243, 163, 22, 0.9);
     border-radius: 50%;
     padding: 10px 15px;
     margin-top: 0px;
@@ -184,13 +184,14 @@ label { font-weight: 700; }
     cursor: pointer;
     display: inline-block;
     font-size: 0.85rem;
-    font-weight: 400;  
+    font-weight: 400;
     padding: 12px 20px;
+    border-radius: 25px
 }
 
-.tm-btn-white { background: white; }
-.tm-btn-white-primary { color: #69c6ba; }
-.tm-btn-white-highlight { color: #c66995; }
+.tm-btn-white { background: #3abefb; }
+.tm-btn-white-primary { color: white; }
+.tm-btn-white-highlight { color: white; }
 
 .tm-btn-white-primary:hover,
 .tm-btn-white-primary:focus,
